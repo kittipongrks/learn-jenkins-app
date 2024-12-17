@@ -11,13 +11,16 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo "with docker"
+                    ls -la
+                    node --version
                     npm --version
-                    touch "with-container.txt"
+                    npm ci
+                    npm runbuild
+                    ls -la
                 '''
             }
         }
-        stage('without Docker') {
+        stage('Test') {
             steps {
                 sh '''
                     echo "without docker"
